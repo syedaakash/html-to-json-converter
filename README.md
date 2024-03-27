@@ -8,38 +8,38 @@ Ensure you have Python installed on your system. You can download Python from th
 
 Clone the project repository from the GitHub repository to your local machine.
 
-Quick Steps to Clone a Repo:
+**Quick Steps to Clone a Repo:**
 
-Install Git: Make sure Git is installed on your computer. You can download it from [git-scm.com](https://git-scm.com/).
+**Install Git:** 
+Make sure Git is installed on your computer. You can download it from [git-scm.com](https://git-scm.com/).
 
-Copy the Repo URL: Get the URL of the repository you wish to clone. This is usually found on the repository's page on platforms like GitHub, under a button labeled "Clone or download".
-
-Open Terminal or Command Prompt:
+**Open Terminal or Command Prompt:**
 Windows: Open Command Prompt or PowerShell.
 Mac/Linux: Open Terminal.
 
-Navigate to Target Directory:
+**Navigate to Target Directory:**
 Use cd to move to the directory where you want the cloned repo to reside.
-cd path/to/your/folder
-Clone the Repository: 
+`cd path/to/your/folder`
 
+**Clone the Repository:** 
 Run the clone command with the copied URL.
-git clone https://github.com/username/repository-name.git
+`git clone https://github.com/syedaakash/html-to-json-converter.git`
 
-Enter the Repo Directory: Change into the newly created directory.
-cd repository-name
+**Enter the Repo Directory:** 
+Change into the newly created directory.
+`cd html-to-json-converter`
 
 ## Step 3: Install Dependencies
 
 Open a terminal or command prompt and navigate to the project directory.
 Run the following command to install the necessary dependencies:
-pip install Flask beautifulsoup4
+`pip install Flask beautifulsoup4`
 
 ## Step 4: Run the Application
 
 In the terminal or command prompt, navigate to the project directory.
 Run the following command to start the Flask application:
-python app.py
+`python app.py`
 Open a web browser and go to http://127.0.0.1:5000 to access the application.
 
 ## Step 5: Usage
