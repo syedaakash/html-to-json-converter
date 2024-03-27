@@ -60,6 +60,11 @@
             font-weight: bold;
             display: none;
         }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -70,6 +75,7 @@
         <div class="loader"></div>
     </div>
     <div class="success-message" id="successMessage">Conversion successful!</div>
+    <div class="error-message" id="errorMessage">Not a Valid JSON!</div>
 </div>
 
 <script>
@@ -89,6 +95,12 @@
             })
             .catch(error => {
                 console.error('Error:', error);
+                document.querySelector('.loader').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                // Hide success message after 2 seconds
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 2000);
             });
     });
 </script>
