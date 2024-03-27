@@ -1,0 +1,47 @@
+<html><head><style type="text/css">
+    @font-face {
+        font-weight: 400;
+        font-style:  normal;
+        font-family: circular;
+
+        src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-weight: 700;
+        font-style:  normal;
+        font-family: circular;
+
+        src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+    }</style></head><body cz-shortcut-listen="true"><div id="divHeartRate" class="data-div"><pre>{<br>  "chart": {<br>    "type": "column"<br>  },<br>  "title": {<br>    "text": "Monthly Distance"<br>  },<br>  "xAxis": {<br>    "categories": [<br>      "Oct",<br>      "Nov",<br>      "Dec",<br>      "Jan",<br>      "Feb",<br>      "Mar"<br>    ],<br>    "title": {<br>      "text": "Month"<br>    }<br>  },<br>  "yAxis": {<br>    "min": 0,<br>    "title": {<br>      "text": "Distance in km"<br>    },<br>    "allowDecimals": false<br>  },<br>  "plotOptions": {<br>    "column": {<br>      "dataLabels": {<br>        "enabled": true<br>      }<br>    }<br>  },<br>  "series": [<br>    {<br>      "name": "Distance",<br>      "data": [<br>        356,<br>        265,<br>        283.6,<br>        334.5,<br>        245.7,<br>        202.2<br>      ]<br>    }<br>  ],<br>  "credits": {<br>    "enabled": false<br>  }<br>}</pre></div>
+
+<script>
+    var id = '1NUzScGga8tHSLA5gt0ELaMbJefaKjxFpVCvhXQTWFnY';
+    var gid = '0';
+    var url = 'https://docs.google.com/spreadsheets/d/' + id + '/gviz/tq?tqx=out:json&tq&gid=' + gid;
+    fetch(url, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+        .then(response => response.text())
+        .then(data => {
+            var jsonData = JSON.parse(data.match(/(?<=google.visualization.Query.setResponse\()(.*)(?=\);)/)[1]);
+            displayHeartRate(jsonData);
+        });
+
+    function displayHeartRate(json) {
+        // Extracting the JSON string from the response
+        var jsonString = json.table.rows[0].c[0].v;
+
+        // Parsing the JSON string to JSON object
+        var jsonObject = JSON.parse(jsonString);
+
+        // Handling line breaks in the JSON object
+        var formattedJson = JSON.stringify(jsonObject, null, 2).replace(/\n/g, '<br>');
+
+        // Displaying the JSON object
+        document.getElementById('divHeartRate').innerHTML = '<pre>' + formattedJson + '</pre>';
+    }
+</script>
+<div id="loom-companion-mv3" ext-id="liecbddmkiiihnedobmlmillhodjkdmb"><section id="shadow-host-companion"></section></div></body></html>
