@@ -33,7 +33,7 @@ Change into the newly created directory.
 
 Open a terminal or command prompt and navigate to the project directory.
 Run the following command to install the necessary dependencies:
-`pip install Flask beautifulsoup4`
+`pip install -r requirements.txt`
 
 ## Step 4: Run the Application
 

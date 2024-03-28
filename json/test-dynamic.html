@@ -1,0 +1,37 @@
+<html>
+<body>
+
+<div id="data-div"></div>
+
+<script>
+    var id = '1NUzScGga8tHSLA5gt0ELaMbJefaKjxFpVCvhXQTWFnY';
+    var gid = '0';
+    var url = 'https://docs.google.com/spreadsheets/d/' + id + '/gviz/tq?tqx=out:json&tq&gid=' + gid;
+    fetch(url, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+        .then(response => response.text())
+        .then(data => {
+            var jsonData = JSON.parse(data.match(/(?<=google.visualization.Query.setResponse\()(.*)(?=\);)/)[1]);
+            displayHeartRate(jsonData);
+        });
+
+    function displayHeartRate(json) {
+        // Extracting the JSON string from the response
+        var jsonString = json.table.rows[0].c[0].v;
+
+        // Parsing the JSON string to JSON object
+        var jsonObject = JSON.parse(jsonString);
+
+        // Handling line breaks in the JSON object
+        var formattedJson = JSON.stringify(jsonObject, null, 2).replace(/\n/g, '<br>');
+
+        // Displaying the JSON object
+        document.getElementById('data-div').innerHTML = '<pre>' + formattedJson + '</pre>';
+    }
+</script>
+
+</body>
+</html>
